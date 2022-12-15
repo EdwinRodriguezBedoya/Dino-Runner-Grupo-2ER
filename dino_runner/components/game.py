@@ -22,6 +22,7 @@ class Game:
         self.obstacle_manager = ObstacleManager()
         self.executing = False
         self.death_count = 0
+        self.point_act = 0
         self.score = Score()
 
     def execute(self):
@@ -94,18 +95,24 @@ class Game:
             message = font.render("Press any Key to ReStart", True, (0, 0, 0))
             message_rect = message.get_rect()
             message_rect.center = (Half_screen_width, Half_screen_height)
+            #dibujamos el mensaje en pantalla
+            self.screen.blit(message,message_rect)
             
             #puntos obtenidos en el juego
             font = pygame.font.Font(FONT_STYLE, 30)
-            message = font.render(f"{self.score.points}", True, (0, 0, 0))
+            message = font.render(f"Tu puntaje mayor es: {self.point_act}", True, (0, 0, 0))
             message_rect = message.get_rect()
-            message_rect.center = (Half_screen_width, Half_screen_height)
-            
+            message_rect.center = (Half_screen_width, Half_screen_height+40)
             #dibujamos el mensaje en pantalla
             self.screen.blit(message,message_rect)
             
             #numero de muertes
-            # print(self.death_count)
+            font = pygame.font.Font(FONT_STYLE, 30)
+            message = font.render(f"Tu numero de Muertes son: {self.death_count}", True, (0, 0, 0))
+            message_rect = message.get_rect()
+            message_rect.center = (Half_screen_width, Half_screen_height+80)
+            #dibujamos el mensaje en pantalla
+            self.screen.blit(message,message_rect)
             
         #poner imagen como icono
         self.screen.blit(DINO_START,(Half_screen_width - 40, Half_screen_height - 120))

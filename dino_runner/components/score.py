@@ -8,7 +8,9 @@ class Score:
     def update(self, game):
         self.points += 1
         if self.points % 100 == 0:
-            game.game_speed += 4
+            game.game_speed += 2
+            
+        game.point_act = self.points
     
     def draw(self, screen):
         #poner mensaje de Bienvenida
